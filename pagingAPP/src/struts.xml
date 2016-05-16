@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <package name="default" extends="struts-default">
+        <action name="goods" class="com.uiyllong.pagingapp.action.AllGoodsAction">
+            <result>/showGoods.jsp</result>
+        </action>
+        <action name="page" class="com.uiyllong.pagingapp.action.PageAction">
+            <result type="redirectAction">
+                <param name="actionName">goods</param>
+                <param name="pageNum">${pageNum}</param>
+                <param name="pageSize">${pageSize}</param>
+                <param name="totalpage">${totalpage}</param>
+            </result>
+        </action>
+    </package>
+
+</struts>

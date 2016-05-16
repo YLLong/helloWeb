@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <package name="default" extends="struts-default">
+        <action name="converter" class="com.uiyllong.action1.ConverterAction" method="execute">
+            <result name="success">/show.jsp</result>
+            <result name="input">/input.jsp</result>
+        </action>
+
+        <action name="converter2" class="com.uiyllong.action1.Converter2Action" method="execute">
+            <result name="success">/show2.jsp</result>
+            <result name="input">/input2.jsp</result>
+        </action>
+    </package>
+
+</struts>

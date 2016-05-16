@@ -1,0 +1,57 @@
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+<validators>
+    <field name="bookName">
+        <field-validator type="requiredstring">
+            <!--<param name="trim">true</param>-->
+            <message>必须输入书名</message>
+        </field-validator>
+        <field-validator type="stringlength">
+            <param name="minLength">4</param>
+            <param name="maxLength">80</param>
+            <message>长度在4到80个字符</message>
+        </field-validator>
+    </field>
+
+    <field name="author">
+        <field-validator type="requiredstring">
+            <!--<param name="trim">true</param>-->
+            <message>必须输入作者</message>
+        </field-validator>
+        <field-validator type="stringlength">
+            <param name="minLength">4</param>
+            <param name="maxLength">80</param>
+            <message>长度在4到80个字符</message>
+        </field-validator>
+    </field>
+
+    <field name="publicationDate">
+        <field-validator type="required">
+            <message>必须输入出版日期</message>
+        </field-validator>
+        <field-validator type="conversion">
+            <message>输入格式为:xxxx-xx-xx</message>
+        </field-validator>
+        <field-validator type="date">
+            <param name="min">1990-01-01</param>
+            <param name="max">2016-05-01</param>
+            <message>日期需在1990-01-01至2016-05-01</message>
+        </field-validator>
+    </field>
+
+    <field name="price">
+        <field-validator type="double">
+            <param name="minInclusive">0.0</param>
+            <message>最小值为0.0</message>
+        </field-validator>
+    </field>
+    
+    <field name="stockNum">
+        <field-validator type="int">
+            <param name="min">0</param>
+            <message>最小值为0</message>
+        </field-validator>
+    </field>
+</validators>

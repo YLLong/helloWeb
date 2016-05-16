@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <constant name="struts.configuration.xml.reload" value="true"/>
+    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
+
+    <package name="default" extends="struts-default">
+
+        <!--全局的错误转页面-->
+        <global-results>
+            <result name="error">/error.jsp</result>
+        </global-results>
+
+        <!--图书馆管理系统小练习：用户登录 -->
+        <action name="login" class="com.uiyllong.actions.LoginAction">
+            <result name="success">/welcome.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+
+        <!--上课小练习，登录页面:用户名 密码 login_1-->
+        <action name="*" class="com.uiyllong.actions.Login_1_Action" method="{1}">
+            <exception-mapping exception="java.lang.Exception" result="math-exception"/>
+            <result name="math-exception">/error.jsp</result>
+            <result name="success">/welcome_1.jsp</result>
+        </action>
+
+        <!-- Actioncontext 访问 web 资源-->
+        <action name="testActionContext" class="com.uiyllong.actions.TestActionContext">
+            <result name="success">/show-action-context.jsp</result>
+        </action>
+
+        <!-- 这是 test-action-context 的配置文件，进入一个用户登录界面的 -->
+        <action name="login_ui">
+            <result>/Login-Ui.jsp</result>
+        </action>
+
+        <!-- 这是 Login_Ui.jsp 的响应配置 -->
+        <action name="user_login" class="com.uiyllong.actions.UserAction" method="execute">
+            <result name="login_success">/login_success.jsp</result>
+        </action>
+
+        <!-- 这是 login_success 的响应配置 -->
+        <action name="logout" class="com.uiyllong.actions.UserAction" method="logout">
+            <result name="logout_success">/Login-Ui.jsp</result>
+        </action>
+
+        <!--这是form-tag的配置-->
+        <action name="save" class="com.uiyllong.actions.Form_tag_User" method="save">
+            <result name="success">/form-tag.jsp</result>
+        </action>
+
+        <!--这是 emp-input-u , index 一个链接通用 的配置-->
+        <action name="emp-*" class="com.uiyllong.actions.Employee" method="{1}">
+            <result name="{1}">/emp-{1}.jsp</result>
+        </action>
+
+        <!--文件上传下载的配置 up-down-load.jsp 是入口 -->
+
+        <action name="download" class="com.uiyllong.actions.Up_DownLoadAction" method="download">
+            <result name="download" type="stream">
+                <param name="bufferSize">1024</param>
+            </result>
+        </action>
+
+        <!--<action name="*" class="com.uiyllong.actions.Up_DownLoadAction" method="{1}">-->
+            <!--<result name="{1}">/success.jsp</result>-->
+        <!--</action>-->
+
+    </package>
+
+</struts>
